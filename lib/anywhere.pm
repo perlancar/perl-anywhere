@@ -107,6 +107,8 @@ Currently you can only use this once.
 
 =head1 SEE ALSO
 
+L<https://rt.cpan.org/Public/Bug/Display.html?id=120238>
+
 L<Acme::use::strict::with::pride> -- from which most code came!
 
 Also look at L<use> and L<feature>.
