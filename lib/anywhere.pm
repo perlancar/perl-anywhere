@@ -101,7 +101,7 @@ sub import {
   return;
 }
 
-=head1 BUGS
+=head1 EVERYWHERE'S BUGS
 
 Currently you can only use this once.
 
