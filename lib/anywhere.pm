@@ -1,15 +1,13 @@
-package everywhere;
+package anywhere;
 
-=head1 NAME
-
-everywhere - Use a module (or feature) everywhere
+# ABSTRACT: Use a module (or feature) everywhere
 
 =head1 SYNOPSIS
 
   #!/usr/bin/perl
 
   use strict;
-  use everywhere qw/ feature say /;
+  use anywhere qw/ feature say /;
   use Greet;
 
   Greet::hello();
@@ -23,6 +21,14 @@ everywhere - Use a module (or feature) everywhere
 
 =head1 DESCRIPTION
 
+C<anywhere> is a fork of L<everywhere> 0.07 while waiting my proposed change to
+be merged (if ever). It currently only has one difference compared to
+C<everywhere>: it sets C<%INC> entry to the file path instead of letting Perl
+set it to C<CODE(0x...)> so other modules see the used module more normally and
+C<anywhere> can work with things like L<true>.
+
+The rest is from L<everywhere> documentation:
+
 I got tired of putting "use 5.010" at the top of every module. So now I can
 throw this in my toplevel program and not have to Repeat Myself elsewhere.
 
@@ -30,7 +36,7 @@ In theory you should be able to pass it whatever you pass to use.
 
 Also, I just made it so you can do:
 
-  use everywhere 'MooseX::Declare',
+  use anywhere 'MooseX::Declare',
     matching => '^MyApp',
     use_here => 0;
 
@@ -76,6 +82,7 @@ sub import {
         if(open my $fh, "<", $full) {
           my @lines = ($file_level ? ($use_line) : (),
             qq{#line 1 "$dir/$file"\n});
+          $INC{$file} = $full;
           return ($fh, sub {
             if(@lines) {
               push @lines, $_;
@@ -104,12 +111,12 @@ L<Acme::use::strict::with::pride> -- from which most code came!
 
 Also look at L<use> and L<feature>.
 
-=head1 AUTHOR
+=head1 EVERYWHERE'S AUTHOR
 
   Brock Wilcox <awwaiid@thelackthereof.org> - http://thelackthereof.org/
   Thanks to mst and #moose ;-)
 
-=head1 COPYRIGHT
+=head1 EVERYWHERE'S COPYRIGHT
 
   Copyright (c) 2008-2011 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
   reserved.  This program is free software; you can redistribute it and/or
@@ -118,4 +125,3 @@ Also look at L<use> and L<feature>.
 =cut
 
 1;
-
