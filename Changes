@@ -1,4 +1,4 @@
-0.002   2017-02-14 (PERLANCAR)
+0.002   2017-02-14  Released-By: PERLANCAR
 
         - No functional changes.
 
@@ -7,6 +7,6 @@
         - [build] Rebuild to reorder the POD sections.
 
 
-0.001   2017-02-14 (PERLANCAR)
+0.001   2017-02-14  Released-By: PERLANCAR
 
         - First release, forked from everywhere 0.07.
